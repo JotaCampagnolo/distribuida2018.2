@@ -1,11 +1,12 @@
 # Imports:
 import bottle
+import json
 import random
 
 # Definition of Class CARD:
 class Card(object):
     # Inicialization Method:
-    def __init__(self, suit, value):
+    def __init__(self, suit="#", value="0"):
         self.suit = suit
         self.value = value
         return
@@ -46,7 +47,7 @@ class Deck(object):
 # Definition of Class PLAYER:python3-bottle
 class Player(object):
     # Inicialization Method:
-    def __init__(self, name):
+    def __init__(self, name="noname"):
         self.name = name
         self.hand = []
         self.points = 0
@@ -74,13 +75,14 @@ class Player(object):
 # Definition of Class TABLE:
 class Table(object):
     # Inicialization Method:
-    def __init__(self, name):
+    def __init__(self, name="noname"):
         self.name = name
         self.deck = Deck()
         self.discard = []
         self.cards = []
         self.players = []
         return
+
     # Start Game Method:
     def start(self):
         while self.discard:
@@ -132,15 +134,15 @@ class Dealer(object):
         return playerPoints
 
 # MAIN of the Program:
-dealer = Dealer()
-table = Table("Table 01")
-players = []
-for player in range(1,10):
-    players.append(Player("Player " + str(player)))
-for player in players:
-    player.joinTable(table)
-
-table.start()
-table.showCards()
-table.showPlayers()
-print(dealer.evaluateHand(table, players[0]))
+# dealer = Dealer()
+# table = Table("Table 01")
+# players = []
+# for player in range(1,10):
+#     players.append(Player("Player " + str(player)))
+# for player in players:
+#     player.joinTable(table)
+#
+# table.start()
+# table.showCards()
+# table.showPlayers()
+# print(dealer.evaluateHand(table, players[0]))
